@@ -8,6 +8,10 @@ body {
   margin: 0;
   font-family: "Lato", sans-serif;
 }
+ .portrait{
+   max-width:250px;
+
+  }
 .sidebar {
   margin: 0;
   padding: 0;
@@ -28,7 +32,7 @@ body {
   background-color: #4CAF50;
   color: white;
 }
-.sidebar a:hover:not(.active) {
+.sidebar a:hover {
   background-color: #555;
   color: white;
 }
@@ -52,12 +56,55 @@ div.content {
     float: none;
   }
 }
+  /* Style the tab */
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 300px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 2px 6px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+}
 </style>
 </head>
 <body>
 
 <div class="sidebar">
- <img src="https://raw.githubusercontent.com/ShannonFoley/ShannonFoley.github.io/master/Foley_Shannon_2016d_jpg.jpg" style="width:100%" alt="Avatar">
+ <img class="portrait" src="https://raw.githubusercontent.com/ShannonFoley/ShannonFoley.github.io/master/Foley_Shannon_2016d_jpg.jpg" style="width:100%" alt="Avatar">
+
   <a class="active" href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#WorkExperience">Work Experience</a>
@@ -65,15 +112,53 @@ div.content {
   <a href="#Resume">Resume</a>
   <a href="#Recommendation">Letters of Recommendation</a>
   <a href="#contact">Contact</a>
-  
+    <div class="tab">
+  <a class="tablinks" onclick="openCity(event, 'London')">London</a>
+  <a class="tablinks" onclick="openCity(event, 'Paris')">Paris</a>
+  <a class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</a>
+
+  </div>
 </div>
 
 <div class="content">
-  <h2>Hello! Welcome to my personal website!</h2>
+    <h2>Hello! Welcome to my personal website!</h2>
   <p>This website is currently being developed to be used as an online resume</p>
   <p>Please return in the future to see the finished product.</p>
 
+  <div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
 </div>
 
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+</div>
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+  
 </body>
 </html>
